@@ -1,0 +1,8 @@
+﻿<UserControl x:Class="PhoneBook.Views.AboutView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel Margin="20">
+        <TextBlock Text="{Binding AppName}" FontSize="24" FontWeight="Bold"/>
+        <TextBlock Text="{Binding Version}" FontSize="16" Margin="0,10,0,0"/>
+    </StackPanel>
+</UserControl>

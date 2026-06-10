@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="PhoneBook.Views.ContactsListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBox Grid.Row="0"
+                 Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                 Margin="0,0,0,8"
+                 Height="28"
+                 VerticalContentAlignment="Center"
+                 Tag="Поиск...">
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <VisualBrush Stretch="None" AlignmentX="Left">
+                                        <VisualBrush.Visual>
+                                            <TextBlock Text="Поиск по имени или телефону..."
+                                                       Foreground="Gray" Margin="4,0,0,0"/>
+                                        </VisualBrush.Visual>
+                                    </VisualBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+
+        <DataGrid Grid.Row="1"
+                  ItemsSource="{Binding Contacts}"
+                  SelectedItem="{Binding SelectedContact}"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id"     Binding="{Binding Id}"    Width="50"/>
+                <DataGridTextColumn Header="Имя"    Binding="{Binding Name}"  Width="*"/>
+                <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,8,0,0">
+            <Button Content="Добавить"
+                    Command="{Binding AddContactCommand}"
+                    Width="100" Margin="0,0,8,0"/>
+            <Button Content="Редактировать"
+                    Command="{Binding EditContactCommand}"
+                    Width="120" Margin="0,0,8,0"/>
+            <Button Content="Удалить"
+                    Command="{Binding DeleteContactCommand}"
+                    Width="100"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
