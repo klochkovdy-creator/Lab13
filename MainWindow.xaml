@@ -17,11 +17,7 @@
             </MenuItem>
         </Menu>
 
-        <!--
-            ContentControl отображает текущий экран.
-            WPF автоматически выбирает нужный UserControl через DataTemplate,
-            определённые в App.xaml по типу ViewModel.
-        -->
+
         <ContentControl Grid.Row="1" Content="{Binding NavigationService.CurrentViewModel}"/>
     </Grid>
 </Window>
